@@ -5,10 +5,11 @@
  *      Author: Valen Yamamoto
  */
 #include <iostream>
+#include "Data.h"
 using namespace std;
 int main() {
 	std::string fileLoc = "RaffleData.csv";
-//	Data data(fileLoc);
+	Data data(fileLoc);
 }
 
 
