@@ -22,7 +22,7 @@ int main() {
 //	printVector(weightedRandom(val, weights, 9));
 
 	cout << endl << endl << endl << "PRINTING" << endl;
-	data.displayWinners(data.getPrizes(), data.getAllWinners());
+	data.displayWinners();
 	cout << "Done Selecting" << endl;
 
 

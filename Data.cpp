@@ -95,13 +95,29 @@ vector<vector<std::string>> Data::getAllWinners() {
 	return allWinners;
 }
 
-void Data::displayWinners(vector<std::string> prizes, vector<vector<std::string>> winners) {
+void Data::displayWinners() {
+	vector<std::string> prizes = getPrizes();
+	vector<vector<std::string>> winners = getAllWinners();
 	for(unsigned int i = 0; i <  prizes.size(); i++) {
 		cout << prizes[i] << endl;
 		printVector(winners[i]);
 		cout << endl << endl;
 	}
+	writeWinnersToFile(winners);
 }
+
+void Data::writeWinnersToFile(vector<vector<std::string>> winners) {
+	fstream outfile ("RaffleResults.txt", ios::out);
+	for(unsigned int i = 0; i <  prizes.size(); i++) {
+		outfile << prizes[i] << "\n";
+		for(unsigned int j = 0; j < winners[i].size(); j ++) {
+			outfile << winners[i][j] << " ";
+		}
+		outfile << "\n" << "\n";
+	}
+	outfile.close();
+}
+
 void Data::openFile() {
 	try {
 		cout << "Opening File" << endl;

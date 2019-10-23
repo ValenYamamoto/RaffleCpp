@@ -46,7 +46,9 @@ public:
 
 	vector<vector<std::string>> getAllWinners();
 
-	void displayWinners(vector<std::string> prizes, vector<vector<std::string>> winners);
+	void displayWinners();
+
+	void writeWinnersToFile(vector<vector<std::string>> winners);
 
 private:
 
