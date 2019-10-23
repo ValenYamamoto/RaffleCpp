@@ -34,6 +34,8 @@ public:
 
 	vector<std::string> getNames();
 
+	vector<std::string> getPrizes();
+
 	int getPrizeCount(std::string prize);
 
 	vector<int> ticketsForPrize(std::string prize);
@@ -42,7 +44,9 @@ public:
 
 	vector<std::string> winnersForPrizeNoReplacement(std::string prize);
 
-	vector<std::string> getAllWinners();
+	vector<vector<std::string>> getAllWinners();
+
+	void displayWinners(vector<std::string> prizes, vector<vector<std::string>> winners);
 
 private:
 

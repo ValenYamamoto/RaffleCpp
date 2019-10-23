@@ -10,6 +10,8 @@
 
 
 using namespace std;
+
+
 int main() {
 	std::string fileLoc = "RaffleData.csv";
 	Data data(fileLoc);
@@ -20,12 +22,9 @@ int main() {
 //	printVector(weightedRandom(val, weights, 9));
 
 	cout << endl << endl << endl << "PRINTING" << endl;
-	printVector(data.getNames());
-	printVector(data.winnersForPrizeNoReplacement("Apple Airpods 2"));
+	data.displayWinners(data.getPrizes(), data.getAllWinners());
 	cout << "Done Selecting" << endl;
-	cout << data.getNames().size() << endl << endl;
 
-	printVector(data.getNames());
 
 
 }

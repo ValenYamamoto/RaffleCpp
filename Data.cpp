@@ -34,6 +34,10 @@ vector<std::string> Data::getNames() {
 	return names;
 }
 
+vector<std::string> Data::getPrizes() {
+	return prizes;
+}
+
 int Data::getPrizeCount(std::string prize) {
 	vector<std::string>::iterator iterator = find(prizes.begin(), prizes.end(), prize);
 
@@ -69,25 +73,35 @@ vector<std::string> Data::winnersForPrizeNoReplacement(std::string prize) {
 		vector<std::string> names = getNames();
 		vector<int> weights = ticketsForPrize(prize);
 		std::string winner = weightedRandom(names, weights);
-		cout << winner << endl;
+//		cout << winner << endl;
 		winners.push_back(winner);
 //		cout << "Here" << endl;
 		vector<std::string>::iterator iterator = find(names.begin(), names.end(), winner);
 
 		int index = distance(names.begin(), iterator);
-		cout << "index " << index << endl;
+//		cout << "index " << index << endl;
 		entries.erase(entries.begin() + index);
 	}
 
 	return winners;
 }
 
-vector<std::string> Data::getAllWinners() {
-	//TODO: FINISH LATER
-	vector<std::string> hi;
-	return hi;
+vector<vector<std::string>> Data::getAllWinners() {
+	vector<vector<std::string>> allWinners;
+
+	for(std::string prize : getPrizes()) {
+		allWinners.push_back(winnersForPrizeNoReplacement(prize));
+	}
+	return allWinners;
 }
 
+void Data::displayWinners(vector<std::string> prizes, vector<vector<std::string>> winners) {
+	for(unsigned int i = 0; i <  prizes.size(); i++) {
+		cout << prizes[i] << endl;
+		printVector(winners[i]);
+		cout << endl << endl;
+	}
+}
 void Data::openFile() {
 	try {
 		cout << "Opening File" << endl;

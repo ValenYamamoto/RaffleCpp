@@ -55,4 +55,12 @@ void printVector(vector<T> v) {
 	cout << endl;
 }
 
+template <typename T>
+void print2DVector(vector<T> v) {
+	for(unsigned int i = 0; i < v.size(); i++) {
+		printVector(v[i]);
+	}
+	cout << endl;
+}
+
 #endif /* RANDOM_H_ */
