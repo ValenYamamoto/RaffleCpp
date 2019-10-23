@@ -20,7 +20,12 @@ int main() {
 //	printVector(weightedRandom(val, weights, 9));
 
 	cout << endl << endl << endl << "PRINTING" << endl;
-	printVector(data.winnersForPrize("Apple Airpods 2"));
+	printVector(data.getNames());
+	printVector(data.winnersForPrizeNoReplacement("Apple Airpods 2"));
+	cout << "Done Selecting" << endl;
+	cout << data.getNames().size() << endl << endl;
+
+	printVector(data.getNames());
 
 
 }

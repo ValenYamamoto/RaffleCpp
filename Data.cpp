@@ -54,10 +54,32 @@ vector<int> Data::ticketsForPrize(std::string prize) {
 	return tickets;
 }
 
-vector<std::string> Data::winnersForPrize(std::string prize) {
+vector<std::string> Data::winnersForPrizeReplacement(std::string prize) {
 	vector<int> weights = ticketsForPrize(prize);
 
-	return weightedRandom(getNames(), weights, getPrizeCount(prize));
+	vector<std::string> winnerNames = weightedRandom(getNames(), weights, getPrizeCount(prize));
+
+	return winnerNames;
+}
+
+vector<std::string> Data::winnersForPrizeNoReplacement(std::string prize) {
+
+	vector<std::string> winners;
+	for(int i = 0; i < getPrizeCount(prize); i++) {
+		vector<std::string> names = getNames();
+		vector<int> weights = ticketsForPrize(prize);
+		std::string winner = weightedRandom(names, weights);
+		cout << winner << endl;
+		winners.push_back(winner);
+//		cout << "Here" << endl;
+		vector<std::string>::iterator iterator = find(names.begin(), names.end(), winner);
+
+		int index = distance(names.begin(), iterator);
+		cout << "index " << index << endl;
+		entries.erase(entries.begin() + index);
+	}
+
+	return winners;
 }
 
 vector<std::string> Data::getAllWinners() {

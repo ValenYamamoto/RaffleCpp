@@ -22,7 +22,7 @@ T weightedRandom(vector<T> values, vector<int> weights) {
 
 	int random = rand() % sumWeights;
 
-	cout << "random " << random << endl;
+//	cout << "random " << random << endl;
 //	cout << "sumWeights " << sumWeights << endl;
 
 	for(unsigned int i = 0; i < weights.size(); i++) {

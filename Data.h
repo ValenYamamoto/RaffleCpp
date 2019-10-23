@@ -38,7 +38,9 @@ public:
 
 	vector<int> ticketsForPrize(std::string prize);
 
-	vector<std::string> winnersForPrize(std::string prize);
+	vector<std::string> winnersForPrizeReplacement(std::string prize);
+
+	vector<std::string> winnersForPrizeNoReplacement(std::string prize);
 
 	vector<std::string> getAllWinners();
 
