@@ -32,6 +32,16 @@ public:
 
 	vector<struct entry> getEntries();
 
+	vector<std::string> getNames();
+
+	int getPrizeCount(std::string prize);
+
+	vector<int> ticketsForPrize(std::string prize);
+
+	vector<std::string> winnersForPrize(std::string prize);
+
+	vector<std::string> getAllWinners();
+
 private:
 
 	void openFile();

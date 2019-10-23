@@ -9,6 +9,8 @@
 #include <sstream>
 #include <vector>
 #include "Data.h"
+#include <algorithm>
+#include "Random.h"
 using namespace std;
 
 
@@ -24,7 +26,45 @@ vector<struct entry> Data::getEntries() {
 	return entries;
 }
 
+vector<std::string> Data::getNames() {
+	vector<std::string> names;
+	for(struct entry e: entries) {
+		names.push_back(e.name);
+	}
+	return names;
+}
 
+int Data::getPrizeCount(std::string prize) {
+	vector<std::string>::iterator iterator = find(prizes.begin(), prizes.end(), prize);
+
+	int index = distance(prizes.begin(), iterator);
+
+	return prizeNumbers[index];
+}
+
+vector<int> Data::ticketsForPrize(std::string prize) {
+	vector<int> tickets;
+	vector<std::string>::iterator iterator = find(prizes.begin(), prizes.end(), prize);
+
+	int index = distance(prizes.begin(), iterator);
+
+	for(struct entry x: entries) {
+		tickets.push_back(x.tickets[index + 4]);
+	}
+	return tickets;
+}
+
+vector<std::string> Data::winnersForPrize(std::string prize) {
+	vector<int> weights = ticketsForPrize(prize);
+
+	return weightedRandom(getNames(), weights, getPrizeCount(prize));
+}
+
+vector<std::string> Data::getAllWinners() {
+	//TODO: FINISH LATER
+	vector<std::string> hi;
+	return hi;
+}
 
 void Data::openFile() {
 	try {
@@ -91,7 +131,7 @@ void Data::readFromFile() {
 	}
 
 	cout << "Row size" << row.size() << endl;
-	for(unsigned int i = 4; i < row.size(); i++) {
+	for(unsigned int i = 4; i < row.size() - 1; i++) {
 		prizes.push_back(row[i]);
 	}
 	cout << "PRIZES" << endl;
@@ -122,7 +162,7 @@ void Data::readFromFile() {
 			std::string name = row[0];
 
 			vector<int> ticketNumber;
-			for(unsigned int i = 4; i < row.size(); i++) {
+			for(unsigned int i = 4; i < row.size() - 1; i++) {
 				ticketNumber.push_back(stoi(row[i]));
 			}
 
