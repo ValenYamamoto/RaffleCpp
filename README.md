@@ -1,6 +1,11 @@
 # RaffleCpp
 A rewrite of raffle program in C++ as a practice. Takes in a csv file of names and number of tickets per prize and then takes a weighted random number selection to find winners.
 
+## Input format
+The program reads from a csv file formated as follows
+
+![example input](https://github.com/ValenYamamoto/RaffleCpp/blob/master/raffleInput.PNG?raw=true)
+
 ## Reading from the file
 Reading from the csv file is accomplished using the ifstream object and passing in the address of the file. 
 ```
