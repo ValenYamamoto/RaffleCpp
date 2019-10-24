@@ -8,7 +8,7 @@ The program reads from a csv file formated as follows
 
 ## Reading from the file
 Reading from the csv file is accomplished using the ifstream object and passing in the address of the file. 
-```
+```C++
 void Data::openFile() {
 	try {
 		cout << "Opening File" << endl;
@@ -25,7 +25,7 @@ void Data::openFile() {
 }
 ```
 Each row containing a entry for a person is then put into a custom struct called entry to hold the person's name and their entries for each prizes as a vector.
-```
+```C++
 struct entry {
 	string name;
 	vector<int> tickets;
@@ -36,7 +36,7 @@ All the entries are kept together in a vector
 ## Operations to find winners
 Once the file is read and the list of entrants is compiled, winners are then randomly selected, weighted by the number of tickets they have for each prize. 
 
-```
+```C++
 template <typename T>
 T weightedRandom(vector<T> values, vector<int> weights) {
 	int sumWeights = accumulate(weights.begin(), weights.end(), 0);
@@ -57,7 +57,7 @@ T weightedRandom(vector<T> values, vector<int> weights) {
 	return values[0];
 }
 ```
-```
+```C++
 vector<std::string> Data::winnersForPrizeNoReplacement(std::string prize) {
 
 	vector<std::string> winners;
@@ -80,7 +80,7 @@ The prizes are chosen left to right, and once a person wins, they are removed fr
 ## Displaying winners and outputing winners to file
 After winers are selected, they are printed to the console as well as stored in an additional file.
 Output is done is an fstream object.
-```
+```C++
 void Data::displayWinners() {
 	vector<std::string> prizes = getPrizes();
 	vector<vector<std::string>> winners = getAllWinners();
